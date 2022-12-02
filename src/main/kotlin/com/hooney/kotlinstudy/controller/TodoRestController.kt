@@ -1,12 +1,21 @@
-package com.hooney.kotlinstudy.controller;
+package com.hooney.kotlinstudy.controller
 
-import com.hooney.kotlinstudy.service.TodoService;
-import lombok.val;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.hooney.kotlinstudy.data.dto.TodoDto
+import com.hooney.kotlinstudy.data.entity.Todo
+import com.hooney.kotlinstudy.service.TodoService
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1")
-public class TodoRestController (val todoService: TodoService) {
+class TodoRestController (private val todoService: TodoService) {
 
+    @GetMapping("/todo")
+    fun selectTodo(): List<Todo> {
+        return todoService.selectTodo()
+    }
+
+    @PostMapping("/todo")
+    fun insertTodo(@RequestBody todoDto: TodoDto): Int {
+        return todoService.insertTodo(todoDto)
+    }
 }

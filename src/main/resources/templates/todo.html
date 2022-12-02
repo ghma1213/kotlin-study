@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css">
+    <script th:src="@{/js/todo.js}"></script>
+    <title th:text="${title}">title</title>
 </head>
 <body>
-$END$
+<button id="insert">Todo 추가</button>
+<label for="title">제목</label><input type="text" id="title">
+<label for="content">내용</label><input type="text" id="content">
+<label for="writer">작성자</label><input type="text" id="writer">
+
+<table>
+    <thead>
+        <tr>
+            <th>제목</th>
+            <th>내용</th>
+            <th>작성자</th>
+            <th>삭제</th>
+        </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+</table>
 </body>
 </html>
